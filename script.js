@@ -1,5 +1,6 @@
 let randomNumberInput = document.querySelector("#random-number-input");
 let checkButton = document.querySelector("#check-button");
+let result = document.querySelector("#result");
 
 const randomNumberFunction = () => {
   const randomNumber = Math.random();
@@ -9,9 +10,11 @@ const randomNumberFunction = () => {
   console.log(roundedRandomNumber);
 
   if (Number(randomNumberInput.value) === roundedRandomNumber) {
-    console.log("you got it");
+    // console.log("you got it");
+    result.innerHTML = "You got it";
   } else {
-    console.log("try again");
+    // console.log("try again");
+    result.innerHTML = "Try again";
   }
 };
 
