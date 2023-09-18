@@ -20,9 +20,7 @@ const checking = () => {
 
     if (numberedRandomNumberInput === "") {
       alert("Please enter a numeric value");
-    }
-
-    if (numberedRandomNumberInput === roundedRandomNumber) {
+    } else if (numberedRandomNumberInput === roundedRandomNumber) {
       resultText.innerHTML = "You got it";
       container.classList.add("correct");
     } else {
