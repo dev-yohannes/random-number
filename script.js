@@ -1,38 +1,52 @@
-let randomNumberInput = document.querySelector("#random-number-input");
-let checkButton = document.querySelector("#check-button");
-let result = document.querySelector("#result");
-// let finalRandomNumber = document.querySelector("#final-random-number")
-let body = document.querySelector("body");
+const body = document.querySelector("body");
+const container = document.querySelector(".container");
+const userNumberInput = document.querySelector("#user-number-input");
+const checkButton = document.querySelector("#check-button");
+const resultText = document.querySelector("#result-text");
+// const tryCounter = document.querySelector("#try-counter");
 
-const randomNumberFunction = () => {
-  const randomNumber = Math.random();
-  const roundedRandomNumber = Math.round(randomNumber * 5);
+//
+// functions
+//
+const checking = () => {
+  // setting up random number
+  const roundedRandomNumber = Math.round(Math.random() * 5);
 
-  console.log(randomNumberInput.value);
-  console.log(roundedRandomNumber);
-
-  if (Number(randomNumberInput.value) === roundedRandomNumber) {
-    // console.log("you got it");
-    // result.innerHTML = `You got it ${roundedRandomNumber}`;
-    result.innerHTML = `You got it`;
-    body.classList.add("correct");
+  if (userNumberInput.value === "") {
+    alert("Please enter a numeric value");
   } else {
-    // console.log("try again");
-    // result.innerHTML = `Try again ${roundedRandomNumber}`;
-    result.innerHTML = `Try again`;
-    body.classList.remove("correct");
-    body.classList.add("error");
+    // changing the input to number type
+    const numberedRandomNumberInput = Number(userNumberInput.value);
+
+    if (numberedRandomNumberInput === "") {
+      alert("Please enter a numeric value");
+    }
+
+    if (numberedRandomNumberInput === roundedRandomNumber) {
+      resultText.innerHTML = "You got it";
+      container.classList.add("correct");
+    } else {
+      resultText.innerHTML = "Try again";
+      container.classList.remove("correct");
+      container.classList.add("error");
+    }
+
+    // console.log("user number -- ", numberedRandomNumberInput);
+    // console.log("random number -- ", roundedRandomNumber);
   }
 };
 
+//
+// event listeners
+//
 checkButton.addEventListener("click", function () {
-  randomNumberFunction();
-  randomNumberInput.value = "";
+  checking();
+  userNumberInput.value = "";
 });
 
 document.addEventListener("keypress", function (e) {
   if (e.key === "Enter") {
-    randomNumberFunction();
-    randomNumberInput.value = "";
+    checking();
+    userNumberInput.value = "";
   }
 });
