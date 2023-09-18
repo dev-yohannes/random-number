@@ -3,7 +3,7 @@ const container = document.querySelector(".container");
 const userNumberInput = document.querySelector("#user-number-input");
 const checkButton = document.querySelector("#check-button");
 const resultText = document.querySelector("#result-text");
-// const tryCounter = document.querySelector("#try-counter");
+const tryCounter = document.querySelector("#try-counter");
 
 //
 // functions
@@ -39,14 +39,27 @@ const checking = () => {
 //
 // event listeners
 //
+counter = 1;
+
+const counterFunction = () => {
+  if (counter <= 5) {
+    tryCounter.innerHTML = `Tries: ${counter++}/5`;
+  } else {
+    tryCounter.innerHTML = "Sorry you've reached a maximum tries";
+    checkButton.disabled = true;
+  }
+};
+
 checkButton.addEventListener("click", function () {
   checking();
+  counterFunction();
   userNumberInput.value = "";
 });
 
 document.addEventListener("keypress", function (e) {
   if (e.key === "Enter") {
     checking();
+    counterFunction();
     userNumberInput.value = "";
   }
 });
