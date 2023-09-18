@@ -47,6 +47,8 @@ const counterFunction = () => {
   } else {
     tryCounter.innerHTML = "Sorry you've reached a maximum tries";
     checkButton.disabled = true;
+    userNumberInput.disabled = true;
+    resultText.innerHTML = "";
   }
 };
 
