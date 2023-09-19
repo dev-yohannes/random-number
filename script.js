@@ -2,6 +2,7 @@ const body = document.querySelector("body");
 const container = document.querySelector(".container");
 const userNumberInput = document.querySelector("#user-number-input");
 const checkButton = document.querySelector("#check-button");
+const retryButton = document.querySelector("#retry");
 const resultText = document.querySelector("#result-text");
 const tryCounter = document.querySelector("#try-counter");
 
@@ -47,6 +48,8 @@ const counterFunction = () => {
     checkButton.disabled = true;
     userNumberInput.disabled = true;
     resultText.innerHTML = "";
+    checkButton.classList.add("display-none-check-button");
+    retryButton.classList.remove("display-none-retry-button");
   }
 };
 
@@ -54,6 +57,7 @@ checkButton.addEventListener("click", function () {
   checking();
   counterFunction();
   userNumberInput.value = "";
+  // userNumberInput.autofocus = true;
 });
 
 document.addEventListener("keypress", function (e) {
