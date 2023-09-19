@@ -40,7 +40,8 @@ body {
   border-radius: 5px;
 }
 
-#check-button {
+.check-button,
+.retry {
   cursor: pointer;
   font-size: 18px;
   text-align: center;
@@ -60,4 +61,12 @@ body {
 
 .correct {
   background-color: green;
+}
+
+.display-none-check-button {
+  display: none;
+}
+
+.display-none-retry-button {
+  display: none;
 }
