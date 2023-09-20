@@ -35,9 +35,6 @@ const checking = () => {
   }
 };
 
-//
-// event listeners
-//
 counter = 1;
 
 const counterFunction = () => {
@@ -53,6 +50,9 @@ const counterFunction = () => {
   }
 };
 
+//
+// event listeners
+//
 checkButton.addEventListener("click", function () {
   checking();
   counterFunction();
@@ -66,4 +66,14 @@ document.addEventListener("keypress", function (e) {
     counterFunction();
     userNumberInput.value = "";
   }
+});
+
+retryButton.addEventListener("click", function () {
+  container.classList.remove("correct");
+  container.classList.remove("error");
+  tryCounter.innerHTML = "";
+  checkButton.disabled = false;
+  userNumberInput.disabled = false;
+  checkButton.classList.remove("display-none-check-button");
+  retryButton.classList.add("display-none-retry-button");
 });
