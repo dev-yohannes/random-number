@@ -28,36 +28,36 @@ const checking = () => {
       container.classList.remove("correct");
       container.classList.add("error");
     }
-
     console.log("user number -- ", numberedRandomNumberInput);
     console.log("random number -- ", roundedRandomNumber);
   }
 };
 
-scoreCounter = 1;
-
-const scoreValue = () => {
-  // console.log(container.classList);
-  if (container.className.includes("correct")) {
-    // console.log("correct value");
-    score.innerHTML = `You got: ${scoreCounter++}/5`;
-  }
-};
+// const scoreValue = () => {
+//   // console.log(container.classList);
+//   if (container.className.includes("correct")) {
+//     // console.log("correct value");
+//     score.innerHTML = `You got: ${scoreCounter++}/5`;
+//     // console.log(`You got: ${scoreCounter++}/5`);
+//   }
+// };
 
 counter = 1;
+scoreCounter = 1;
+
 const counterFunction = () => {
   if (counter <= 5) {
     tryCounter.innerHTML = `Tries: ${counter++}/5`;
   } else {
     tryCounter.innerHTML = "Sorry you've reached a maximum tries";
+    score.innerHTML = `You got: ${scoreCounter++}/5`;
     checkButton.disabled = true;
     userNumberInput.disabled = true;
     resultText.innerHTML = "";
     checkButton.classList.add("display-none-check-button");
     retryButton.classList.remove("display-none-retry-button");
-
-    scoreValue();
   }
+  // scoreValue();
 };
 
 // -------- event listeners --------
@@ -82,6 +82,7 @@ retryButton.addEventListener("click", function () {
   container.classList.remove("correct");
   container.classList.remove("error");
   tryCounter.innerHTML = "";
+  score.innerHTML = "";
   checkButton.disabled = false;
   userNumberInput.disabled = false;
   checkButton.classList.remove("display-none-check-button");
