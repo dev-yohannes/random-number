@@ -12,6 +12,8 @@ const checking = () => {
   // setting up random number
   const roundedRandomNumber = Math.round(Math.random() * 5);
 
+  scoreCounter = 1;
+
   if (userNumberInput.value === "") {
     alert("Please enter a numeric value");
   } else {
@@ -23,6 +25,7 @@ const checking = () => {
     } else if (numberedRandomNumberInput === roundedRandomNumber) {
       resultText.innerHTML = "You got it";
       container.classList.add("correct");
+      scoreCounter++;
     } else {
       resultText.innerHTML = "Try again";
       container.classList.remove("correct");
@@ -43,14 +46,13 @@ const checking = () => {
 // };
 
 counter = 1;
-scoreCounter = 1;
 
 const counterFunction = () => {
   if (counter <= 5) {
     tryCounter.innerHTML = `Tries: ${counter++}/5`;
   } else {
     tryCounter.innerHTML = "Sorry you've reached a maximum tries";
-    score.innerHTML = `You got: ${scoreCounter++}/5`;
+    score.innerHTML = `You got: ${scoreCounter}/5`;
     checkButton.disabled = true;
     userNumberInput.disabled = true;
     resultText.innerHTML = "";
