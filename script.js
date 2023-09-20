@@ -7,12 +7,12 @@ const resultText = document.querySelector("#result-text");
 const tryCounter = document.querySelector("#try-counter");
 const score = document.querySelector("#score");
 
+scoreCounter = 0;
+
 // --------functions --------
 const checking = () => {
   // setting up random number
   const roundedRandomNumber = Math.round(Math.random() * 5);
-
-  scoreCounter = 1;
 
   if (userNumberInput.value === "") {
     alert("Please enter a numeric value");
@@ -25,7 +25,7 @@ const checking = () => {
     } else if (numberedRandomNumberInput === roundedRandomNumber) {
       resultText.innerHTML = "You got it";
       container.classList.add("correct");
-      scoreCounter++;
+      scoreCounter = scoreCounter + 1;
     } else {
       resultText.innerHTML = "Try again";
       container.classList.remove("correct");
@@ -81,6 +81,7 @@ document.addEventListener("keypress", function (e) {
 });
 
 retryButton.addEventListener("click", function () {
+  scoreCounter = 0;
   container.classList.remove("correct");
   container.classList.remove("error");
   tryCounter.innerHTML = "";
